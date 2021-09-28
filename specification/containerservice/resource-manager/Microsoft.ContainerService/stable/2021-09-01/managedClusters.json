@@ -3068,6 +3068,20 @@
           "default": "10.0.0.0/16",
           "description": "A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges."
         },
+        "podCidrs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "CIDR notation IP ranges from which to assign pod IPs when kubenet is used. It can be 1 IPv4 CIDR or 1 each of IPv4 and IPv6."
+        },
+        "serviceCidrs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "CIDR notation IP ranges from which to assign service cluster IPs. They must not overlap with any Subnet IP ranges. It can be 1 IPv4 CIDR or 1 each of IPv4 and IPv6."
+        },
         "dnsServiceIP": {
           "type": "string",
           "pattern": "^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$",
@@ -3079,6 +3093,13 @@
           "pattern": "^([0-9]{1,3}\\.){3}[0-9]{1,3}(\\/([0-9]|[1-2][0-9]|3[0-2]))?$",
           "default": "172.17.0.1/16",
           "description": "A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range."
+        },
+        "ipFamilies": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Desired IP versions to have available in the cluster. Use IPv4 for single stack or IPv4,IPv6 for dual stack networking."
         },
         "outboundType": {
           "type": "string",
